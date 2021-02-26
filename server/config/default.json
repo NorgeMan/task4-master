@@ -1,0 +1,5 @@
+{
+  "serverPort" : 5000,
+  "dbUrl": "mongodb+srv://user1:123qwerty@clustertry.jmw79.mongodb.net/Task4Try?retryWrites=true&w=majority",
+  "secretKey": "Ivan-secret-key"
+}
