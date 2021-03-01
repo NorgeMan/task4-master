@@ -16,7 +16,9 @@
     "express": "^4.17.1",
     "express-validator": "^6.9.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.17"
+    "modules": "^0.4.0",
+    "mongoose": "^5.11.17",
+    "node": "^15.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.17",

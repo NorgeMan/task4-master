@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="navbar">
             <div className="container">
                 <img src={Logo} alt="Logo" height="42" className="navbar__logo"/>
-                <div className="navbar__header">Auth Page</div>
+                <div className="navbar__welcome"><NavLink to="../welcomepage/WelcomePage.jsx">Welcome page</NavLink></div>
                 {!isAuth && <div className="navbar__login"><NavLink to="/login">Login In</NavLink></div>}
                 {!isAuth && <div className="navbar__registration"><NavLink to="/registration">Sign Up</NavLink></div>}
                 {!isAuth && <div className="navbar__login" onClick={() => dispatchEvent(logout())}>Log out</div>}
