@@ -1,4 +1,4 @@
-const Profile = require('../models/UserProfile')
+const Profile = require('../models/Profile')
 
 class ProfileController {
     async getAll(req, res) {

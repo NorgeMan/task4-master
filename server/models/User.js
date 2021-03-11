@@ -7,7 +7,7 @@ const User = new Schema({
     lastName: {type: String},
     files: [{type: ObjectId, ref:'File'}],
 
-    lastModifiedBy: {type: String},
+    lastModifiedBy: {type: String, default: "anonymous"},
     lastModified: {type: Date, default: Date.now()}
 })
 

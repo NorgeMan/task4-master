@@ -1,10 +1,10 @@
 const {Schema, model, ObjectId} = require("mongoose")
 
-const UserProfile = new Schema({
+const Profile = new Schema({
     user: {type: ObjectId, ref:'User'},
 
-    lastModifiedBy: {type: String},
+    lastModifiedBy: {type: String, default: "anonymous"},
     lastModified: {type: Date, default: Date.now()}
 })
 
-module.exports = model('UserProfile', UserProfile)
+module.exports = model('Profile', Profile)
