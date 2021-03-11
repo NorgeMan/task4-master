@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {useEffect} from "react/cjs/react.production.min";
 import HomePage from "./homepage/HomePage.jsx";
 import {getUsers} from "../actions/userList";
+import WelcomePage from "./welcomepage/WelcomePage";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
@@ -38,7 +39,7 @@ function App() {
                         </Switch>
                         :
                         <Switch>
-                            <Route exact path="/" component={HomePage}/>
+                            <Route exact path="/" component={WelcomePage}/>
                             <Redirect to="/"/>
                         </Switch>
                     }
