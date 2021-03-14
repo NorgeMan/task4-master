@@ -11,6 +11,7 @@ import {useEffect} from "react/cjs/react.production.min";
 import HomePage from "./homepage/HomePage.jsx";
 import {getUsers} from "../actions/userList";
 import WelcomePage from "./welcomepage/WelcomePage";
+import Authors from "./lists/Authors";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
@@ -24,25 +25,20 @@ function App() {
         if (isAuth) {
             dispatch(getUsers())
         }
-    }, [isAuth])
+    })
 
     return (
         <BrowserRouter>
             <div className='app'>
                 <Navbar/>
                 <div className='wrap'>
-                    {!isAuth ?
-                        <Switch>
-                            <Route path="/registration" component={Registration}/>
-                            <Route path="/login" component={Login}/>
-                            <Redirect to="/login"/>
-                        </Switch>
-                        :
-                        <Switch>
-                            <Route exact path="/" component={WelcomePage}/>
-                            <Redirect to="/"/>
-                        </Switch>
-                    }
+                    <Switch>
+                        <Route exact path="/" component={WelcomePage}/>
+                        <Redirect to="/"/>
+                        <Route path="/registration" component={Registration}/>
+                        <Route path="/login" component={Login}/>
+                        <Redirect to="/login"/>
+                    </Switch>
                 </div>
             </div>
         </BrowserRouter>

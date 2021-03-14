@@ -11,7 +11,7 @@ const HomePage = () => {
     }, [])
 
     const userList = useSelector(state => state.users)
-    console.log("2. Get user-list from state: " + userList)
+    console.log("2. Get user-lists from state: " + userList)
 
     const columns = [
         {field: 'id', headerName: 'ID', width: 170},
