@@ -13,6 +13,7 @@ import {TabLink} from "react-tabs-redux";
 
 const WelcomePage = () => {
     const dispatch = useDispatch()
+
     return (
         <MDBCol md="12">
             <MDBFormInline className="md-form mr-auto mb-4">
@@ -24,16 +25,23 @@ const WelcomePage = () => {
                     <Tabs>
                         <div className="tabs">
                             <Tab>
-                                <a href="../lists/Authors.jsx" className="button tab-lists">Authors</a>
-                                <a href="../lists/Authors.jsx" className="btn btn-primary tab-lists">Authors</a>
+                                <button className="tab-lists">Authors</button>
                             </Tab>
                             <Tab>
-                                <button className="tab-lists"><a href="../lists/Articles.jsx">Articles</a></button>
+                                <button className="tab-lists">Articles</button>
                             </Tab>
                             <Tab>
-                                <button className="tab-lists"><a href="../lists/Genres.jsx">Genres</a></button>
+                                <button className="tab-lists">Genres</button>
                             </Tab>
                         </div>
+                        <Panel>
+                            <p>
+                                Source: {' '}
+                                <a href="../lists/Authors.jsx">Authors</a>
+                            </p>
+                        </Panel>
+                        <Panel></Panel>
+                        <Panel></Panel>
                     </Tabs>
                 </div>
                 <div className="container">
