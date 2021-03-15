@@ -1,8 +1,8 @@
 import React from 'react';
-import WelcomePage from "../welcomepage/WelcomePage";
 const Authors = () => {
     return (
         <div>
+            Authors
             <ul>
                 <li>1</li>
                 <li>2</li>
