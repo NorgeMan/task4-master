@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from "./navbar/Navbar";
 import './app.css';
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Registration from './authorization/Registration';
 import Login from "./authorization/Login";
 import {useDispatch, useSelector} from "react-redux";
@@ -9,12 +9,14 @@ import {auth} from "../actions/user"
 import 'bootstrap/dist/css/bootstrap.css';
 import {useEffect} from "react/cjs/react.production.min";
 
-import HomePage from "./homepage/HomePage.jsx";
 import {getUsers} from "../actions/userList";
 import Articles from "./lists/Articles";
 import Authors from "./lists/Authors";
 import Genres from "./lists/Genres";
 import WelcomePage from "./welcomepage/WelcomePage";
+
+import Logo from "../assets/img/navbar-logo.png";
+import {logout} from "../reducers/userReducer";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
@@ -31,16 +33,15 @@ function App() {
     })
 
     return (
-        <BrowserRouter>
+        <Router>
             <div className='app'>
-                <Navbar/>
+                <Navbar />
                 <div className='wrap'>
                     <Switch>
                         <Route exact path="/" component={WelcomePage}/>
-                        <Redirect to="/"/>
                         <Route path="/registration" component={Registration}/>
                         <Route path="/login" component={Login}/>
-                        <Redirect to="/login"/>
+                        <Route path="/logout" component={WelcomePage}/>
 
                         <Route path="/welcome" component={WelcomePage}/>
                         <Route path="/articles" component={Articles}/>
@@ -49,8 +50,7 @@ function App() {
                     </Switch>
                 </div>
             </div>
-        </BrowserRouter>
+        </Router>
     );
 }
-
 export default App;
