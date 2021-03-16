@@ -9,7 +9,6 @@ import {useDispatch} from "react-redux";
 import {Button, Link} from "@material-ui/core";
 import Authors from "../lists/Authors";
 import {Route} from "react-router-dom";
-import {TabLink} from "react-tabs-redux";
 
 const WelcomePage = () => {
     const dispatch = useDispatch()
