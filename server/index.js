@@ -15,7 +15,7 @@ app.use(corsMiddleware)
 app.use(express.json())
 
 app.use("/api/auth", authRouter)
-app.use('/catalog', catalogRouter)
+app.use('/api/catalog', catalogRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/profiles', profileRouter)
 

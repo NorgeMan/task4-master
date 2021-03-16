@@ -10,13 +10,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {useEffect} from "react/cjs/react.production.min";
 
 import {getUsers} from "../actions/userList";
+import {getBooks} from "../actions/book";
+
 import Articles from "./lists/Articles";
 import Authors from "./lists/Authors";
 import Genres from "./lists/Genres";
 import WelcomePage from "./welcomepage/WelcomePage";
-
-import Logo from "../assets/img/navbar-logo.png";
-import {logout} from "../reducers/userReducer";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
@@ -32,10 +31,14 @@ function App() {
         }
     })
 
+    useEffect(() => {
+        dispatch(getBooks())
+    })
+
     return (
         <Router>
             <div className='app'>
-                <Navbar />
+                <Navbar/>
                 <div className='wrap'>
                     <Switch>
                         <Route exact path="/" component={WelcomePage}/>
@@ -53,4 +56,5 @@ function App() {
         </Router>
     );
 }
+
 export default App;
