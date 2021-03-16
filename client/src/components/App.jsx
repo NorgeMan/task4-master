@@ -8,10 +8,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {auth} from "../actions/user"
 import 'bootstrap/dist/css/bootstrap.css';
 import {useEffect} from "react/cjs/react.production.min";
+
 import HomePage from "./homepage/HomePage.jsx";
 import {getUsers} from "../actions/userList";
-import WelcomePage from "./welcomepage/WelcomePage";
+import Articles from "./lists/Articles";
 import Authors from "./lists/Authors";
+import Genres from "./lists/Genres";
+import WelcomePage from "./welcomepage/WelcomePage";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
@@ -38,6 +41,11 @@ function App() {
                         <Route path="/registration" component={Registration}/>
                         <Route path="/login" component={Login}/>
                         <Redirect to="/login"/>
+
+                        <Route path="/welcome" component={WelcomePage}/>
+                        <Route path="/articles" component={Articles}/>
+                        <Route path="/authors" component={Authors}/>
+                        <Route path="/genres" component={Genres}/>
                     </Switch>
                 </div>
             </div>
