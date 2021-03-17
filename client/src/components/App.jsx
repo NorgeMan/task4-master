@@ -11,11 +11,13 @@ import {useEffect} from "react/cjs/react.production.min";
 
 import {getUsers} from "../actions/userList";
 import {getBooks} from "../actions/book";
+import {getAuthors} from "../actions/author";
 
 import Articles from "./lists/Articles";
 import Authors from "./lists/Authors";
 import Genres from "./lists/Genres";
 import WelcomePage from "./welcomepage/WelcomePage";
+import {getGenres} from "../actions/genre";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
@@ -33,6 +35,12 @@ function App() {
 
     useEffect(() => {
         dispatch(getBooks())
+    })
+    useEffect(() => {
+        dispatch(getAuthors())
+    })
+    useEffect(() => {
+        dispatch(getGenres())
     })
 
     return (
