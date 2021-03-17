@@ -5,9 +5,6 @@ import MaterialTable from "material-table";
 import {MTableIcons} from "../../utils/MTableWrapper";
 
 const Authors = () => {
-    // const dispatch = useDispatch()
-    // dispatch(getAuthors());
-    // const authors_list = useSelector(state => state.authors);
 
     const dispatch = useDispatch()
     const authors_list = useSelector(state => state.authors);

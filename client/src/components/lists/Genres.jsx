@@ -2,16 +2,18 @@ import React from 'react';
 import {useEffect} from "react/cjs/react.production.min";
 import {getGenres} from "../../actions/genre";
 import {useDispatch, useSelector} from "react-redux";
-import MaterialTable from "material-table";
+import MaterialTable, {MTableToolbar} from "material-table";
+import {MTableIcons} from "../../utils/MTableWrapper";
 
 const Genres = () => {
     const dispatch = useDispatch()
-    dispatch(getGenres());
-
     const genres_list = useSelector(state => state.genres);
+    if(!genres_list) {
+        dispatch(getGenres());
+    }
     console.log("2. found: ");
     console.log(genres_list);
-
+    const tableIcons = MTableIcons();
     const columns = [
         {title: 'Title', field: 'name'},
         {title: 'ID', field: '_id'}
@@ -35,6 +37,7 @@ const Genres = () => {
     return (
         <div style={{height: '100%', width: '100%'}}>
             <MaterialTable title="Genres" data={rows} columns={columns}
+                           icons={tableIcons}
                            options={{search: true, paging: true, filtering: false, exportButton: true}}/>
         </div>
     );
