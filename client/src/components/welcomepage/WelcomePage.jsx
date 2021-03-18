@@ -1,21 +1,20 @@
 import React from 'react';
-import {MDBCol, MDBFormInline, MDBBtn} from "mdbreact";
-import {Tabs, Tab, Panel} from '@bumaga/tabs'
+import {Panel, Tabs} from '@bumaga/tabs'
 import "./welcomepage.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import {useDispatch} from "react-redux";
-import {Button, Link} from "@material-ui/core";
-import Authors from "../lists/Authors";
-import {Route} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const WelcomePage = () => {
-    const dispatch = useDispatch()
-
     return (
         <div>
-            <Tabs> <Panel> <p> Authors: {' '} <a href="../lists/Authors.jsx">Author</a> </p> </Panel> </Tabs>
+            <Tabs>
+                <Panel>
+                    <p><NavLink to="/authors">Authors</NavLink></p>
+                </Panel>
+            </Tabs>
+
             <div className="container">
                 <div className="item">1</div>
                 <div className="item">2</div>
@@ -34,5 +33,4 @@ const WelcomePage = () => {
 
     );
 };
-
 export default WelcomePage;

@@ -5,13 +5,12 @@ import {NavLink} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import {logout} from "../../reducers/userReducer";
 import {useDispatch, useSelector} from "react-redux";
-import {MDBBtn, MDBCol, MDBFormInline} from "mdbreact";
 import SearchField from 'react-search-field';
 
 const Navbar = () => {
     const isAuth = useSelector(state => state.user.isAuth)
+    const isAdmin = true;
     const dispatch = useDispatch()
-
 
     return (
         <div className="navbar">
@@ -23,6 +22,7 @@ const Navbar = () => {
                 <div className="navbar__login"><NavLink to="/articles">Articles</NavLink></div>
                 <div className="navbar__login"><NavLink to="/authors">Authors</NavLink></div>
                 <div className="navbar__login"><NavLink to="/genres">Genres</NavLink></div>
+                {isAdmin &&<div className="navbar__login"><NavLink to="/users">Admin</NavLink></div>}
 
                 <SearchField placeholder='Search' onSearchClick={onSearchClick}/>
                 {!isAuth && <div className="navbar__registration"><NavLink to="/login">Login In</NavLink></div>}
@@ -36,6 +36,6 @@ const Navbar = () => {
     );
 };
 function onSearchClick(){
-
+ // to-do implement handler here
 }
 export default Navbar;

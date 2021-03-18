@@ -9,7 +9,6 @@ export function getGenres() {
                        {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
             )
 
-            console.log('1. getGenres:');
             console.log(response.data['genre_list']);
             dispatch(setGenres(response.data['genre_list']))
         } catch (e) {

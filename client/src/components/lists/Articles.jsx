@@ -6,12 +6,10 @@ import {MTableIcons} from "../../utils/MTableWrapper";
 
 const Articles = () => {
     const dispatch = useDispatch()
-    const book_list = useSelector(state => state.books);
-    if (!book_list) {
+    const bookState = useSelector(state => state.books);
+    if (!bookState) {
         dispatch(getBooks());
     }
-    console.log(book_list);
-
     const tableIcons = MTableIcons();
     const columns = [
         {
@@ -34,9 +32,8 @@ const Articles = () => {
         }
     ];
     let rows = [];
-    if (book_list) {
-        console.log(book_list);
-        rows = book_list['books'];
+    if (bookState) {
+        rows = bookState['books'];
         if (rows) {
             rows.sort(function (a, b) {
                     let textA = a.title.toUpperCase();
@@ -45,15 +42,14 @@ const Articles = () => {
                 }
             );
         }
-        console.log("4. found:");
-        console.log(rows);
     }
     return (
         <div style={{height: '100%', width: '100%'}}>
             <MaterialTable title="Articles" data={rows} columns={columns}
                            icons={tableIcons}
-                           options={{search: true, paging: true, exportButton: true}}
-                           onRowClick={(event, rowData) => rowClickedHandler(rowData)}/>
+                           options={{search: true, paging: true, pageSize: 10, exportButton: true}}
+                           onRowClick={(event, rowData) => rowClickedHandler(rowData)}
+            />
         </div>
     );
 }

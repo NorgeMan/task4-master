@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {getUsers} from "../../actions/userList";
+import {getUsers} from "../../actions/user";
 import * as React from 'react';
 import {DataGrid} from '@material-ui/data-grid';
 import {useEffect} from "react";
