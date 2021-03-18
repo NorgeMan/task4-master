@@ -22,6 +22,7 @@ const Navbar = () => {
                 <div className="navbar__login"><NavLink to="/articles">Articles</NavLink></div>
                 <div className="navbar__login"><NavLink to="/authors">Authors</NavLink></div>
                 <div className="navbar__login"><NavLink to="/genres">Genres</NavLink></div>
+                {isAdmin &&<div className="navbar__login"><NavLink to="/users">Admin</NavLink></div>}
 
                 <SearchField placeholder='Search' onSearchClick={onSearchClick}/>
                 {!isAuth && <div className="navbar__registration"><NavLink to="/login">Login In</NavLink></div>}

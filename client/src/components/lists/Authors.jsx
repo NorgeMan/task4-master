@@ -7,12 +7,11 @@ import dateFormat from 'dateformat';
 
 const Authors = () => {
     const dispatch = useDispatch()
-    const authors_list = useSelector(state => state.authors);
-    if (!authors_list) {
+    const authorState = useSelector(state => state.authors);
+    if (!authorState) {
         dispatch(getAuthors());
     }
 
-    console.log(authors_list);
     const tableIcons = MTableIcons();
     const columns = [
         {
@@ -33,16 +32,15 @@ const Authors = () => {
         }
     ];
     let rows = [];
-    if (authors_list) {
-        console.log(authors_list);
-        rows = authors_list['authors'];
-        console.log(rows);
+    if (authorState) {
+        rows = authorState['authors'];
     }
     return (
         <div style={{height: '100%', width: '100%'}}>
             <MaterialTable title="Authors" data={rows} columns={columns}
                            icons={tableIcons}
-                           options={{search: true, paging: true, exportButton: true, rowsPerPage: 10}}/>
+                           options={{search: true, paging: true, pageSize: 10, exportButton: true}}
+            />
         </div>
     );
 }

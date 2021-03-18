@@ -6,18 +6,15 @@ import {getUsers} from "../../actions/user";
 
 const Users = () => {
     const dispatch = useDispatch();
-    const user_list = useSelector(state => state.users);
-    if (!user_list) {
+    const userState = useSelector(state => state.user);
+    if (!userState) {
         dispatch(getUsers());
     }
-
-    console.log("1. user_list " + user_list);
-    console.log(user_list);
 
     const tableIcons = MTableIcons();
     const columns = [
         {
-            title: 'id', field: 'ID',
+            title: 'id', field: '_id',
             render: rowData => {
                 if (rowData.email) {
                     let url = "/user/" + rowData._id;
@@ -27,20 +24,19 @@ const Users = () => {
                 return (<a href='/users'>..</a>);
             }
         },
-        {title: 'email', field: 'Email'}
+        {title: 'Email', field: 'email'}
     ];
 
     let rows = [];
-    if (user_list) {
-        console.log(user_list);
-        rows = user_list['users'];
-        console.log(rows);
+    if (userState) {
+        rows = userState['users'];
     }
     return (
         <div style={{height: '100%', width: '100%'}}>
             <MaterialTable title="Users" data={rows} columns={columns}
                            icons={tableIcons}
-                           options={{search: true, paging: true, exportButton: true}}/>
+                           options={{search: true, paging: true, pageSize: 10, exportButton: true}}
+            />
         </div>
     );
 }

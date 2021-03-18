@@ -6,11 +6,10 @@ import {MTableIcons} from "../../utils/MTableWrapper";
 
 const Genres = () => {
     const dispatch = useDispatch()
-    const genres_list = useSelector(state => state.genres);
-    if (!genres_list) {
+    const genreState = useSelector(state => state.genres);
+    if (!genreState) {
         dispatch(getGenres());
     }
-    console.log(genres_list);
     const tableIcons = MTableIcons();
     const columns = [
         {
@@ -26,9 +25,8 @@ const Genres = () => {
 
     ];
     let rows = [];
-    if (genres_list) {
-        console.log(genres_list);
-        rows = genres_list['genres'];
+    if (genreState) {
+        rows = genreState['genres'];
         if (rows) {
             rows.sort(function (a, b) {
                     let textA = a.name.toUpperCase();
@@ -37,13 +35,13 @@ const Genres = () => {
                 }
             );
         }
-        console.log(rows);
     }
     return (
         <div style={{height: '100%', width: '100%'}}>
             <MaterialTable title="Genres" data={rows} columns={columns}
                            icons={tableIcons}
-                           options={{search: true, paging: true, filtering: false, exportButton: true, rowsPerPage: 10}}/>
+                           options={{search: true, paging: true, pageSize: 10, exportButton: true}}
+            />
         </div>
     );
 }
