@@ -42,7 +42,7 @@ const Authors = () => {
         <div style={{height: '100%', width: '100%'}}>
             <MaterialTable title="Authors" data={rows} columns={columns}
                            icons={tableIcons}
-                           options={{search: true, paging: true, exportButton: true}}/>
+                           options={{search: true, paging: true, exportButton: true, rowsPerPage: 10}}/>
         </div>
     );
 }

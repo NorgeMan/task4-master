@@ -45,14 +45,13 @@ const Articles = () => {
                 }
             );
         }
-        console.log("4. found:");
         console.log(rows);
     }
     return (
         <div style={{height: '100%', width: '100%'}}>
             <MaterialTable title="Articles" data={rows} columns={columns}
                            icons={tableIcons}
-                           options={{search: true, paging: true, exportButton: true}}
+                           options={{search: true, paging: true, exportButton: true, rowsPerPage: 10}}
                            onRowClick={(event, rowData) => rowClickedHandler(rowData)}/>
         </div>
     );

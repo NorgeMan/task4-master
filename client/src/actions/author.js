@@ -8,8 +8,6 @@ export function getAuthors() {
             const response = await axios.get(`http://localhost:5000/api/catalog/authors`,
                        {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
             )
-
-            console.log('1. getAuthors:');
             console.log(response.data['author_list']);
             dispatch(setAuthors(response.data['author_list']))
         } catch (e) {

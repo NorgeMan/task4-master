@@ -9,7 +9,6 @@ export function getBooks() {
                        {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
             )
 
-            console.log('1. getBooks:');
             console.log(response.data['book_list']);
             dispatch(setBooks(response.data['book_list']))
         } catch (e) {

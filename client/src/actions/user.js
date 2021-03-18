@@ -1,6 +1,6 @@
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.css";
-import {setUser} from "../reducers/userReducer";
+import {setUser, setUsers} from "../reducers/userReducer";
 
 export const registration = async (email, password) => {
     try {
@@ -38,10 +38,25 @@ export const auth = () => {
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
         } catch (e) {
-            // alert(e.response.data.message)
             // alert(e.message)
             console.log(e.message)
             localStorage.removeItem('token')
+        }
+    }
+}
+
+export const getUsers = () => {
+    return async dispatch => {
+        try {
+            console.log('Token: ' + localStorage.getItem('token'))
+            const response = await axios.get(`http://localhost:5000/api/users`,
+                {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
+            )
+            console.log("1. Found users");
+            console.log(response.data['user_list']);
+            dispatch(setUsers(response.data['user_list']))
+        } catch (e) {
+            alert(e.message)
         }
     }
 }

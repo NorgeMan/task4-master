@@ -5,13 +5,14 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Registration from './authorization/Registration';
 import Login from "./authorization/Login";
 import {useDispatch, useSelector} from "react-redux";
-import {auth} from "../actions/user"
+
 import 'bootstrap/dist/css/bootstrap.css';
 import {useEffect} from "react/cjs/react.production.min";
 
-import {getUsers} from "../actions/userList";
+import {auth, getUsers} from "../actions/user"
 import {getBooks} from "../actions/book";
 import {getAuthors} from "../actions/author";
+import {getGenres} from "../actions/genre";
 
 import Articles from "./lists/Articles";
 import Authors from "./lists/Authors";
@@ -22,8 +23,6 @@ import Book from "./pages/Book";
 import Author from "./pages/Author";
 import Genre from "./pages/Genre";
 
-import {getGenres} from "../actions/genre";
-
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
@@ -33,9 +32,7 @@ function App() {
     }, [])
 
     useEffect(() => {
-        if (isAuth) {
-            dispatch(getUsers())
-        }
+        dispatch(getUsers())
     })
 
     useEffect(() => {

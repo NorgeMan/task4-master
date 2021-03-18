@@ -43,7 +43,7 @@ const Genres = () => {
         <div style={{height: '100%', width: '100%'}}>
             <MaterialTable title="Genres" data={rows} columns={columns}
                            icons={tableIcons}
-                           options={{search: true, paging: true, filtering: false, exportButton: true}}/>
+                           options={{search: true, paging: true, filtering: false, exportButton: true, rowsPerPage: 10}}/>
         </div>
     );
 }
