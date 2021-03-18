@@ -3,16 +3,15 @@ import {getAuthors} from "../../actions/author";
 import {useDispatch, useSelector} from "react-redux";
 import MaterialTable from "material-table";
 import {MTableIcons} from "../../utils/MTableWrapper";
+import dateFormat from 'dateformat';
 
 const Authors = () => {
-
     const dispatch = useDispatch()
     const authors_list = useSelector(state => state.authors);
     if (!authors_list) {
         dispatch(getAuthors());
     }
 
-    console.log("2. found: ");
     console.log(authors_list);
     const tableIcons = MTableIcons();
     const columns = [
@@ -27,25 +26,16 @@ const Authors = () => {
                 return (<a href='/authors'>..</a>);
             }
         }, {
-            title: 'Date of birth', field: 'date_of_birth'
-            // ,
-            // render: rowData => {
-            //     new Intl.DateTimeFormat("en-GB", {
-            //         year: "numeric",
-            //         month: "long",
-            //         day: "2-digit"
-            //     }).format(rowData.date_of_birth)
-            // }
+            title: 'Date of birth', field: 'date_of_birth',
+            render: rowData => {
+                return rowData.date_of_birth ? dateFormat(rowData.date_of_birth, "dd mmmm yyyy") : '';
+            }
         }
     ];
     let rows = [];
     if (authors_list) {
-        console.log("3. found: ");
         console.log(authors_list);
-
         rows = authors_list['authors'];
-
-        console.log("4. found: ");
         console.log(rows);
     }
     return (

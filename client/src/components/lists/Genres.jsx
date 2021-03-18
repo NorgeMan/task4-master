@@ -1,5 +1,4 @@
 import React from 'react';
-import {useEffect} from "react/cjs/react.production.min";
 import {getGenres} from "../../actions/genre";
 import {useDispatch, useSelector} from "react-redux";
 import MaterialTable, {MTableToolbar} from "material-table";
@@ -8,30 +7,36 @@ import {MTableIcons} from "../../utils/MTableWrapper";
 const Genres = () => {
     const dispatch = useDispatch()
     const genres_list = useSelector(state => state.genres);
-    if(!genres_list) {
+    if (!genres_list) {
         dispatch(getGenres());
     }
-    console.log("2. found: ");
     console.log(genres_list);
     const tableIcons = MTableIcons();
     const columns = [
-        {title: 'Title', field: 'name'},
-        {title: 'ID', field: '_id'}
+        {
+            title: 'Title', field: 'name',
+            render: rowData => {
+                if (rowData.name) {
+                    let url = "/genre/" + rowData._id;
+                    return (<a href={url}>{rowData.name}</a>);
+                }
+                return (<a href='/genres'>..</a>);
+            }
+        }
+
     ];
     let rows = [];
     if (genres_list) {
-        console.log("3. found:");
         console.log(genres_list);
         rows = genres_list['genres'];
-        /*if (rows) {
+        if (rows) {
             rows.sort(function (a, b) {
-                    let textA = a.title.toUpperCase();
-                    let textB = b.title.toUpperCase();
+                    let textA = a.name.toUpperCase();
+                    let textB = b.name.toUpperCase();
                     return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
                 }
             );
-        }*/
-        console.log("4. found:");
+        }
         console.log(rows);
     }
     return (
