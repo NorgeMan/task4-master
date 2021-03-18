@@ -6,8 +6,8 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-
-    max-width: 1140px;
+    background: white;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -18,7 +18,7 @@
     margin-top: 50px;
     margin-bottom: 20px;
 
-    background: #FFDEAD;
+    background: whitesmoke;
 }
 
 @media (max-width: 1155px) {
