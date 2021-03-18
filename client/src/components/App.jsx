@@ -17,6 +17,11 @@ import Articles from "./lists/Articles";
 import Authors from "./lists/Authors";
 import Genres from "./lists/Genres";
 import WelcomePage from "./welcomepage/WelcomePage";
+
+import Book from "./pages/Book";
+import Author from "./pages/Author";
+import Genre from "./pages/Genre";
+
 import {getGenres} from "../actions/genre";
 
 function App() {
@@ -58,6 +63,11 @@ function App() {
                         <Route path="/articles" component={Articles}/>
                         <Route path="/authors" component={Authors}/>
                         <Route path="/genres" component={Genres}/>
+
+                        <Route path="/book/:id" component={Book}/>
+                        <Route path="/author/:id" component={Author}/>
+                        <Route path="/genre/:id" component={Genre}/>
+
                     </Switch>
                 </div>
             </div>
