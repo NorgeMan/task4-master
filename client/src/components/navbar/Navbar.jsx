@@ -16,18 +16,21 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <div className="container">
+
                 <img src={Logo} alt="Logo" height="42" className="navbar__logo"/>
 
                 <div className="navbar__login"><NavLink to="/welcome">Welcome page</NavLink></div>
                 <div className="navbar__login"><NavLink to="/articles">Articles</NavLink></div>
                 <div className="navbar__login"><NavLink to="/authors">Authors</NavLink></div>
                 <div className="navbar__login"><NavLink to="/genres">Genres</NavLink></div>
+
                 <SearchField placeholder='Search' onSearchClick={onSearchClick}/>
-                {!isAuth && <div className="navbar__login"><NavLink to="/login">Login In</NavLink></div>}
+                {!isAuth && <div className="navbar__registration"><NavLink to="/login">Login In</NavLink></div>}
                 {!isAuth && <div className="navbar__registration"><NavLink to="/registration">Sign Up</NavLink></div>}
                 {!isAuth &&
-                <div className="navbar__login" onClick={() => dispatchEvent(logout())}><NavLink to="/logout">Log
+                <div className="navbar__registration" onClick={() => dispatchEvent(logout())}><NavLink to="/logout">Log
                     out</NavLink></div>}
+
             </div>
         </div>
     );

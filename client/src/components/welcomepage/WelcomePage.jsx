@@ -15,25 +15,7 @@ const WelcomePage = () => {
 
     return (
         <div>
-            <Tabs>
-                <div className="tabs">
-                    <Tab>
-                        <button className="tab-lists">Authors</button>
-                    </Tab>
-                    <Tab>
-                        <button className="tab-lists">Articles</button>
-                    </Tab>
-                    <Tab>
-                        <button className="tab-lists">Genres</button>
-                    </Tab>
-                </div>
-                <Panel>
-                    <p>
-                        Source: {' '}
-                        <a href="../lists/Authors.jsx">Authors</a>
-                    </p>
-                </Panel>
-            </Tabs>
+            <Tabs> <Panel> <p> Authors: {' '} <a href="../lists/Authors.jsx">Author</a> </p> </Panel> </Tabs>
             <div className="container">
                 <div className="item">1</div>
                 <div className="item">2</div>
