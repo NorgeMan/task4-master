@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 const Author = () => {
     // We can use the `useParams` hook here to access
     // the dynamic pieces of the URL.
-    let { id } = useParams();
+    let {id} = useParams();
     const dispatch = useDispatch()
     const book_list = useSelector(state => state.books);
     if (!book_list) {
@@ -15,17 +15,17 @@ const Author = () => {
     }
     return (
         <div className="authorsList">
-            <div className="container">
-                <label>Add genre </label>
+            <div className="form__container form">
+                <h3>Add author</h3>
                 Name:
-                <input type="text" placeholder="Enter the author's name" required/>
+                <input type="text" className="inputs" placeholder="Enter the author's name" required/>
                 Surname:
-                <input type="text" placeholder="Enter the author's surname" required/>
+                <input type="text" className="inputs" placeholder="Enter the author's surname" required/>
                 Date of birth:
-                <input type="date" id="birthday" name="birthday" />
+                <input className="date inputs" type="date" id="birthday" name="birthday"/>
                 Date of death:
-                <input type="date" id="day of the dead" name="day of the dead" />
-                <input type="submit" name="commit" value="Enter"/>
+                <input className="date inputs" type="date" id="day of the dead" name="day of the dead"/>
+                <input className="submit" type="submit" name="commit" value="Enter"/>
             </div>
         </div>
     );
