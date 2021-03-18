@@ -1,4 +1,5 @@
 import React from 'react';
+import './author.css';
 import {getBooks} from "../../actions/book";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
@@ -13,8 +14,19 @@ const Author = () => {
         dispatch(getBooks());
     }
     return (
-        <div style={{height: '100%', width: '100%'}}>
-            <h1>Author: {id}</h1>
+        <div className="authorsList">
+            <div className="container">
+                <label>Add genre </label>
+                Name:
+                <input type="text" placeholder="Enter the author's name" required/>
+                Surname:
+                <input type="text" placeholder="Enter the author's surname" required/>
+                Date of birth:
+                <input type="date" id="birthday" name="birthday" />
+                Date of death:
+                <input type="date" id="day of the dead" name="day of the dead" />
+                <input type="submit" name="commit" value="Enter"/>
+            </div>
         </div>
     );
 }
