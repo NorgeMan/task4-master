@@ -1,78 +1,35 @@
-import React, {useState} from 'react';
+import React from 'react';
+import './book.css';
+import {getBooks} from "../../actions/book";
+import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import Input from "../../utils/input/Input";
-import {useSelector} from "react-redux";
 
 const Book = () => {
     // We can use the `useParams` hook here to access
     // the dynamic pieces of the URL.
     let {id} = useParams();
-
-    const author_list = useSelector(state => state.books);
-    const authors = author_list.authors['authors'];
-
-    const [title, setTitle] = useState("")
-    const [email, setEmail] = useState("")
-    const [author, setAuthor] = useState("")
-    const [password, setPassword] = useState("")
-    const [country, setCountry] = useState("");
-    const [acceptedTerms, setAcceptedTerms] = useState(false);
-
-    const handleSubmit = (event) => {
-        console.log('Email: ${email}\n' +
-            '      Password: ${password}\n' +
-            '      Country: ${country}\n' +
-            '      Accepted Terms: ${acceptedTerms}'
-        );
-        event.preventDefault();
+    const dispatch = useDispatch()
+    const book_list = useSelector(state => state.books);
+    if (!book_list) {
+        dispatch(getBooks());
     }
     return (
-        <div style={{height: '100%', width: '100%'}}>
-            <h1>Book: {id}</h1>
-            <div className='authorization'>
-                <form onSubmit={handleSubmit}>
-                    <div className="authorization__header">Book: {id}</div>
-                    <Input value={email} setValue={setEmail} type="text" placeholder="Enter the email..."/>
-                    <Input value={password} setValue={setPassword} type="password" placeholder="Enter the password..."/>
-                    <label> Email:
-                        <input name="email" type="email" value={email} onChange={e => setEmail(e.target.value)}
-                               required/>
-                    </label>
+        <div className="authorsList">
+            <div className="form__container form">
+                <h3>Add book</h3>
+                Title:
+                <input type="text" className="inputs" placeholder="Enter the book's title" required/>
+                Author:
+                <input type="text" className="inputs" placeholder="Enter the book's author" required/>
+                Pin a file:
+                <input className="file inputs" type="file" id="file" name="file" multiple/>
+                About author:
+                <input className="about inputs" type="url" id="aboutAuthor" name="url"
+                       placeholder="Enter the url with the info about author"/>
 
-                    <label> Name of book
-                        <input name="title" type="text" value={title} placeholder='Name of book'
-                               onChange={e => setTitle(e.target.value)} required/>
-                    </label>
-
-                    <label> Author:
-                        <select name="author" value={author} onChange={e => setAuthor(e.target.value)} required>
-                            {authors.map(
-                                author => (<option key={author._id} value={author._id}>{author.first_name}</option>
-                                ))
-                            }
-                        </select>
-                    </label>
-
-                    <label>
-                        <input
-                            name="acceptedTerms"
-                            type="checkbox"
-                            onChange={e => setAcceptedTerms(e.target.value)}
-                            required/>
-                        I accept the terms of service
-                    </label>
-
-                    <button className="authorization__btn" onClick={() => saveEntity()}>Save
-                    </button>
-                </form>
+                <input className="submit" type="submit" name="commit" value="Enter"/>
             </div>
-
         </div>
     );
 }
-
-function saveEntity() {
-
-}
-
 export default Book;

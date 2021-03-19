@@ -1,6 +1,6 @@
 import React from 'react';
 import './author.css';
-import {getBooks} from "../../actions/book";
+import {getAuthors} from "../../actions/author";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 
@@ -9,9 +9,9 @@ const Author = () => {
     // the dynamic pieces of the URL.
     let {id} = useParams();
     const dispatch = useDispatch()
-    const book_list = useSelector(state => state.books);
-    if (!book_list) {
-        dispatch(getBooks());
+    const author_list = useSelector(state => state.authors);
+    if (!author_list) {
+        dispatch(getAuthors());
     }
     return (
         <div className="authorsList">
