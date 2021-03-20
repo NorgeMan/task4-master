@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Registration from './authorization/Registration';
 import Login from "./authorization/Login";
 import {useDispatch, useSelector} from "react-redux";
-
+import Social from "./authorization/Social";
 import 'bootstrap/dist/css/bootstrap.css';
 import {useEffect} from "react/cjs/react.production.min";
 
@@ -56,6 +56,7 @@ function App() {
                         <Route path="/registration" component={Registration}/>
                         <Route path="/login" component={Login}/>
                         <Route path="/logout" component={WelcomePage}/>
+                        <Route path="/social" component={Social}/>
 
                         <Route path="/welcome" component={WelcomePage}/>
                         <Route path="/articles" component={Articles}/>
