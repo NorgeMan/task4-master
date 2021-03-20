@@ -48,7 +48,6 @@ export const auth = () => {
 export const getUsers = () => {
     return async dispatch => {
         try {
-            console.log('Token: ' + localStorage.getItem('token'))
             const response = await axios.get(`http://localhost:5000/api/users`,
                 {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
             )

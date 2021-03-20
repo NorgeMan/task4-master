@@ -13,7 +13,7 @@ exports.genre_list = function(req, res, next) {
       if (err) { return next(err); }
       // Successful, so render.
       //res.render('genre_list', { title: 'Genre List', list_genres:  list_genres});
-        console.log("found data: " + list_genres)
+        // console.log("found data: " + list_genres)
         return res.json({title: 'Genre List', genre_list:  list_genres});
     });
 

@@ -13,7 +13,7 @@ exports.author_list = function (req, res, next) {
             if (err) { return next(err); }
             // Successful, so render.
             //res.render('author_list', { title: 'Author List', author_list: list_authors });
-            console.log("found data: " + list_authors)
+            // console.log("found data: " + list_authors)
             return res.json({title: 'Author List', author_list: list_authors});
         })
 

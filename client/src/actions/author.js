@@ -4,7 +4,6 @@ import {setAuthors} from "../reducers/authorReducer";
 export function getAuthors() {
     return async dispatch => {
         try {
-            console.log('Token: ' + localStorage.getItem('token'))
             const response = await axios.get(`http://localhost:5000/api/catalog/authors`,
                        {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
             )

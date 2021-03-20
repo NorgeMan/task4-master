@@ -38,7 +38,7 @@ exports.book_list = function (req, res, next) {
         } else {
             // Successful, so render
             // res.render('book_list', { title: 'Book List', book_list:  list_books});
-            console.log("found data: " + list_books)
+            // console.log("found data: " + list_books)
             return res.json({title: 'Book List', book_list: list_books});
         }
     });
@@ -249,6 +249,7 @@ exports.book_delete_post = function (req, res, next) {
 
 // Display book update form on GET.
 exports.book_update_get = function (req, res, next) {
+    console.log("Try to load data: " + req.params.id);
 
     // Get book, authors and genres for form.
     async.parallel({
@@ -279,7 +280,14 @@ exports.book_update_get = function (req, res, next) {
                 }
             }
         }
-        res.render('book_form', {
+        // res.render('book_form', {
+        //     title: 'Update Book',
+        //     authors: results.authors,
+        //     genres: results.genres,
+        //     book: results.book
+        // });
+        console.log("Loaded data: + Update Book " + results.book);
+        return res.json({
             title: 'Update Book',
             authors: results.authors,
             genres: results.genres,

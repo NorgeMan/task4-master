@@ -25,7 +25,7 @@ class UserController {
                     // res.send({message: "Server error"})
                     return next(err)
                 } else {
-                    console.log("found data: " + list_users)
+                    // console.log("found data: " + list_users)
                     return res.json({title: 'User List', user_list: list_users});
                 }
             });
