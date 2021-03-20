@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "Port=3001 react-scripts-start",
     "dev": "nodemon index.js"
   },
   "author": "Ivan Verameichyk",
