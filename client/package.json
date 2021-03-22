@@ -26,6 +26,7 @@
     "react-search-field": "^1.2.0",
     "react-tabs-redux": "^4.0.0",
     "reactjs-social-login": "^1.0.5",
+    "node": "^14.16.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
