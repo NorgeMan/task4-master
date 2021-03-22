@@ -1,1 +1,1 @@
-export const baseUrl = `https://stark-ravine-53426.herokuapp.com/`
+export const API_URL = `https://stark-ravine-53426.herokuapp.com/`
