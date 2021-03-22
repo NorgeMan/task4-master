@@ -1,9 +1,13 @@
 import React, {Component, useState} from 'react';
 import './book.css';
 import '../authorization/authorization.css';
-import {getBookUpdate, getBookUpdate1, getBookUpdate2} from "../../actions/book";
-
+import {getBookUpdate} from "../../actions/book";
 import {withRouter, useParams} from "react-router-dom";
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 // stateful component
 class Book extends Component {
@@ -40,12 +44,7 @@ class Book extends Component {
         const id = this.props.match.params.id;
         console.log('id: ' + id);
         try {
-            // const response = await getBookUpdate2(id);
-            // const response = getBookUpdate1(id);
-            // console.log(response);
-            const bookState = await getBookUpdate1(id);
-            console.log('bookState');
-            console.log(bookState);
+            const bookState = await getBookUpdate(id);
             this.setState({
                 ['json']: bookState
             });
@@ -56,21 +55,23 @@ class Book extends Component {
 
             this.setState({'authors': bookState.authors});
             this.setState({'genres': bookState.genres});
-            console.log(this.state);
 
-            // const bookState = useSelector(state => state.book);
-            //const json = await response.json();
-            //this.setState({data: json});
+            this.selectedCheckboxes = new Set();
+            console.log(this.state);
         } catch (error) {
             console.log(error);
         }
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
+    toggleCheckbox = id => {
+        if (this.selectedCheckboxes.has(id)) {
+            this.selectedCheckboxes.delete(id);
+        } else {
+            this.selectedCheckboxes.add(id);
+        }
     }
 
-    saveEntity = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
     }
 
@@ -88,11 +89,13 @@ class Book extends Component {
                         <input className="about inputs" type="url" id="aboutAuthor" name="url"
                                placeholder="Enter the url with the info about author"/>
                         About author:
-                        <select name="author" value={this.state.author._id} className="inputs" onChange={this.handleInputChange} required>
+                        <select name="author" value={this.state.author._id} className="inputs"
+                                onChange={this.handleInputChange} required>
                             {
                                 this.state.authors.map(
                                     author => (
-                                        <option key={author._id} value={author._id}>{author.first_name} {author.family_name}</option>
+                                        <option key={author._id}
+                                                value={author._id}>{author.first_name} {author.family_name}</option>
                                     ))
                             }
                         </select><br/>
@@ -103,9 +106,30 @@ class Book extends Component {
                                   wrap={true} required/>
                         <br/>Pin a file:
                         <input className="file inputs" type="file" id="file" name="file" multiple/>
-                        Genre:
-                        <input className="submit" type="submit" name="commit" value="Enter"
-                               onClick={() => this.saveEntity}/>
+
+                        <FormControl required component="fieldset">
+                            <FormLabel component="Genre">Genre:</FormLabel>
+                            <FormGroup>
+
+                                <div style={{display: 'inline'}}>
+                                    {
+                                        this.state.genres.map(
+                                            genreItem => (
+                                                <FormControlLabel
+                                                    control={<Checkbox
+                                                        name={genreItem.name}
+                                                        value={genreItem._id}
+                                                        onChange={this.toggleCheckbox}
+                                                        id={genreItem._id}
+                                                    />}
+                                                    label={genreItem.name}
+                                                />
+                                            ))
+                                    }
+                                </div>
+                            </FormGroup>
+                            <input className="submit" type="submit" name="Save" value="Save"/>
+                        </FormControl>
                     </form>
                 </div>
             </div>
@@ -114,20 +138,3 @@ class Book extends Component {
 }
 
 export default withRouter(Book);
-
-// {
-//     this.state.genres.map(
-//         genreItem => (
-//             <div style='display: inline; padding-right:10px;'>
-//                 <input
-//                     name="genre"
-//                     id={genreItem._id}
-//                     value={genreItem._id}
-//                     type="checkbox"
-//                     onChange={this.handleInputChange}
-//                     className="inputs"
-//                 />
-//                 <label for={genreItem._id}>{genreItem.name}</label>
-//             </div>
-//         ))
-// }

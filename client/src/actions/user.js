@@ -1,10 +1,11 @@
-import axios from 'axios';
+import axiosConfig from './axiosConfig';
 import "bootstrap/dist/css/bootstrap.css";
-import {setUser,setUsers} from "../reducers/userReducer";
+import {setUser, setUsers} from "../reducers/userReducer";
 
 export const registration = async (email, password) => {
     try {
-        const response = await axios.post(`http://localhost:5000/api/auth/registration`, {
+        // const response = await axios.post(`http://localhost:5000/api/auth/registration`, {
+        const response = await axiosConfig.post(`/api/auth/registration`, {
             email,
             password
         })
@@ -17,7 +18,7 @@ export const registration = async (email, password) => {
 export const login = (email, password) => {
     return async dispatch => {
         try {
-            const response = await axios.post(`http://localhost:5000/api/auth/login`, {
+            const response = await axiosConfig.post(`/api/auth/login`, {
                 email,
                 password
             })
@@ -32,7 +33,7 @@ export const login = (email, password) => {
 export const auth = () => {
     return async dispatch => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/auth/auth`,
+            const response = await axiosConfig.get(`/api/auth/auth`,
                 {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
             )
             dispatch(setUser(response.data.user))
@@ -48,7 +49,7 @@ export const auth = () => {
 export const getUsers = () => {
     return async dispatch => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/users`,
+            const response = await axiosConfig.get(`/api/users`,
                 {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
             )
             console.log(response.data['user_list']);

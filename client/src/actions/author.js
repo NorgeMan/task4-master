@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axiosConfig from './axiosConfig';
 import {setAuthors} from "../reducers/authorReducer";
 
 export function getAuthors() {
     return async dispatch => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/catalog/authors`,
+            const response = await axiosConfig.get(`/api/catalog/authors`,
                        {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
             )
             console.log(response.data['author_list']);

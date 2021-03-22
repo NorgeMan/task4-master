@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axiosConfig from './axiosConfig';
 import {setBooks} from "../reducers/bookReducer";
 
 export function getBooks() {
     return async dispatch => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/catalog/books`,
+            const response = await axiosConfig.get(`/api/catalog/books`,
                 {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
             )
             console.log(response.data['book_list']);
@@ -15,62 +15,24 @@ export function getBooks() {
     }
 }
 
-export function getBookCreate() {
-    return async dispatch => {
-        try {
-            console.log('Token: ' + localStorage.getItem('token'))
-            const response = await axios.get(`http://localhost:5000/api/catalog/book/create`,
-                {
-                    headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
-                }
-            )
-
-            console.log(response.data['book_list']);
-            dispatch(setBooks(response.data['book_list']))
-        } catch (e) {
-            alert(e.message)
-        }
+export async function getBookCreate() {
+    try {
+        const response = await axiosConfig.get(`/api/catalog/book/create`,
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
+        )
+        console.log(response.data);
+        return response.data;
+    } catch (e) {
+        alert(e.message)
     }
 }
 
 export async function getBookUpdate(id) {
     try {
-        console.log('1. getBookUpdate');
-        const response = await axios.get(`http://localhost:5000/api/catalog/book/${id}/update`,
+        const response = await axiosConfig.get(`/api/catalog//book/${id}/update`,
             {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
         )
-        console.log('2. getBookUpdate');
         console.log(response.data);
-        return response.data;
-    } catch (e) {
-        alert(e.message)
-    }
-}
-
-export async function getBookUpdate1(id) {
-    try {
-        console.log('11. getBookUpdate: ' + id);
-        const response = await axios.get(`http://localhost:5000/api/catalog//book/${id}/update`,
-            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
-        )
-        console.log('21. getBookUpdate');
-        console.log(response.data);
-        return response.data;
-        // setBookMap(response.data);
-    } catch (e) {
-        alert(e.message)
-    }
-}
-
-export const getBookUpdate2 = (id) => {
-    try {
-        console.log('1. getBookUpdate: ' + id);
-        const response = axios.get(`http://localhost:5000/api/catalog//book/${id}/update`,
-            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
-        )
-        console.log('2. getBookUpdate');
-        console.log(response);
-        // console.log(response.data);
         return response.data;
     } catch (e) {
         alert(e.message)
@@ -80,7 +42,7 @@ export const getBookUpdate2 = (id) => {
 export function getBookDelete(id) {
     return async dispatch => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/catalog/book/:id/delete`,
+            const response = await axiosConfig.get(`/api/catalog/book/:id/delete`,
                 {
                     headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
                     params: {id: id}
@@ -95,21 +57,15 @@ export function getBookDelete(id) {
     }
 }
 
-export function getBook(id) {
-    return async dispatch => {
-        try {
-            const response = await axios.get(`http://localhost:5000/api/catalog/book`,
-                {
-                    headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
-                    params: {id: id}
-                }
-            )
-
-            console.log(response.data['book_list']);
-            dispatch(setBooks(response.data['book_list']))
-        } catch (e) {
-            alert(e.message)
-        }
+export async function getBook(id) {
+    try {
+        const response = await axiosConfig.get(`/api/catalog//book/${id}`,
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
+        )
+        console.log(response.data);
+        return response.data;
+    } catch (e) {
+        alert(e.message)
     }
 }
 
