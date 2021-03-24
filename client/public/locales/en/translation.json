@@ -1,0 +1,17 @@
+{
+  "title": "Welcome to react using react-i18next",
+  "description": {
+    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
+    "part2": "Switch language between english and german using buttons above."
+  },
+  "book_name.label": "Name of the book",
+  "welcome_page.label": "Welcome page",
+  "articles.label": "Articles",
+  "authors.label": "Authors",
+  "genres.label": "Genres",
+  "users.label": "Users",
+  "search.label": "Search",
+  "login.label": "Login In",
+  "registration.label": "Sign Up",
+  "logout.label": "Log out"
+}
