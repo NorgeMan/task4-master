@@ -6,6 +6,8 @@
   },
   "book_name.label": "Name of the book",
   "welcome_page.label": "Welcome page",
+  "welcome_page_latest.label": "Recently changed",
+  "welcome_page_popular.label": "Popular",
   "articles.label": "Articles",
   "authors.label": "Authors",
   "genres.label": "Genres",

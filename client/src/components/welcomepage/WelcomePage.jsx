@@ -1,19 +1,20 @@
 import React from 'react';
-import {Panel, Tabs} from '@bumaga/tabs'
 import "./welcomepage.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import {NavLink} from "react-router-dom";
+import WelcomePageLatest from "./WelcomePageLatest";
+import WelcomePagePopular from "./WelcomePagePopular";
+import {useTranslation} from 'react-i18next';
 
 const WelcomePage = () => {
+    const {t} = useTranslation();
     return (
         <div>
-            <Tabs>
-                <Panel>
-                    <p><NavLink to="/authors">Authors</NavLink></p>
-                </Panel>
-            </Tabs>
+            <h3>{t('welcome_page_latest.label')}</h3>
+            <WelcomePageLatest />
+            <h3>{t('welcome_page_popular.label')}</h3>
+            <WelcomePagePopular />
 
             <div className="container">
                 <div className="item">1</div>

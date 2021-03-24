@@ -6,6 +6,8 @@
   },
   "book_name.label": "Название книги",
   "welcome_page.label": "Главная страница",
+  "welcome_page_latest.label": "Последние обновленные",
+  "welcome_page_popular.label": "Популярные",
   "articles.label": "Статьи",
   "authors.label": "Авторы",
   "genres.label": "Жанры",
