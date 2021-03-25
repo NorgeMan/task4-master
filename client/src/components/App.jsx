@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from "./navbar/Navbar";
 import './app.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -28,6 +28,7 @@ function App() {
     const isAuth = useSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
 
+
     useEffect(() => {
         dispatch(auth())
     }, [])
@@ -47,31 +48,31 @@ function App() {
     })
 
     return (
-        <Router>
-            <div className='app'>
-                <Navbar/>
-                <div className='wrap'>
-                    <Switch>
-                        <Route exact path="/" component={WelcomePage}/>
-                        <Route path="/registration" component={Registration}/>
-                        <Route path="/login" component={Login}/>
-                        <Route path="/logout" component={WelcomePage}/>
-                        <Route path="/social" component={Social}/>
+            <Router>
+                <div className='app'>
+                    <Navbar/>
+                    <div className='wrap'>
+                        <Switch>
+                            <Route exact path="/" component={WelcomePage}/>
+                            <Route path="/registration" component={Registration}/>
+                            <Route path="/login" component={Login}/>
+                            <Route path="/logout" component={WelcomePage}/>
+                            <Route path="/social" component={Social}/>
 
-                        <Route path="/welcome" component={WelcomePage}/>
-                        <Route path="/articles" component={Articles}/>
-                        <Route path="/authors" component={Authors}/>
-                        <Route path="/genres" component={Genres}/>
-                        <Route path="/users" component={Users}/>
+                            <Route path="/welcome" component={WelcomePage}/>
+                            <Route path="/articles" component={Articles}/>
+                            <Route path="/authors" component={Authors}/>
+                            <Route path="/genres" component={Genres}/>
+                            <Route path="/users" component={Users}/>
 
-                        <Route path="/book/:id" component={Book}/>
-                        <Route path="/author/:id" component={Author}/>
-                        <Route path="/genre/:id" component={Genre}/>
+                            <Route path="/book/:id" component={Book}/>
+                            <Route path="/author/:id" component={Author}/>
+                            <Route path="/genre/:id" component={Genre}/>
 
-                    </Switch>
+                        </Switch>
+                    </div>
                 </div>
-            </div>
-        </Router>
+            </Router>
     );
 }
 
