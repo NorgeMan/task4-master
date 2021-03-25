@@ -15,7 +15,6 @@ const WelcomePage = () => {
             <WelcomePageLatest />
             <h3>{t('welcome_page_popular.label')}</h3>
             <WelcomePagePopular />
-
             <div className="container">
                 <div className="item">1</div>
                 <div className="item">2</div>

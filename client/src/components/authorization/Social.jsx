@@ -17,7 +17,7 @@ const Social = () => {
 
     return (
         <div>
-
+            <hr/>
             <FacebookLogin
                 appId="344950797211559"
                 buttonText="Login"
@@ -47,6 +47,7 @@ const Social = () => {
                          onRequest={onRequest}
                          buttonText="Login with GitHub"
                          redirectUri="https://localhost"
+
             />
 
         </div>

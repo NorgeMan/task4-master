@@ -47,23 +47,23 @@ const WelcomePagePopular = () => {
             <GridList className={classes.gridList} cols={2.5}>
                 {
                     tileData.map((tile) => (
-                    <GridListTile key={getBookImageUrl(tile)}>
-                        <img src={getBookImageUrl(tile)} alt={tile.title} />
-                        <GridListTileBar
-                            title={tile.title}
-                            subtitle={tile.summary}
-                            classes={{
-                                root: classes.titleBar,
-                                title: classes.title,
-                            }}
-                            actionIcon={
-                                <IconButton aria-label={`star ${tile.title}`}>
-                                    <StarBorderIcon className={classes.title} />
-                                </IconButton>
-                            }
-                        />
-                    </GridListTile>
-                ))}
+                        <GridListTile key={getBookImageUrl(tile)}>
+                            <img src={getBookImageUrl(tile)} alt={tile.title}/>
+                            <GridListTileBar
+                                title={tile.title}
+                                subtitle={tile.summary}
+                                classes={{
+                                    root: classes.titleBar,
+                                    title: classes.title,
+                                }}
+                                actionIcon={
+                                    <IconButton aria-label={`star ${tile.title}`}>
+                                        <StarBorderIcon className={classes.title}/>
+                                    </IconButton>
+                                }
+                            />
+                        </GridListTile>
+                    ))}
             </GridList>
         </div>
     );
