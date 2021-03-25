@@ -6,7 +6,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import {useDispatch, useSelector} from "react-redux";
-import {getBooks} from "../../actions/book";
+import {getBooks, getBookImageUrl} from "../../actions/book";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,11 +28,10 @@ const useStyles = makeStyles((theme) => ({
         background:
             'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
     },
+    jss7 : {
+        color: 'whitesmoke',
+    }
 }));
-
-const imageUrl = (tile) => {
-    return tile.img ? tile.img: '/asset/logo1.png';
-}
 
 const WelcomePageLatest = () => {
     const classes = useStyles();
@@ -51,8 +50,8 @@ const WelcomePageLatest = () => {
             <GridList className={classes.gridList} cols={2.5}>
                 {
                     tileData.map((tile) => (
-                    <GridListTile key={imageUrl(tile)}>
-                        <img src={imageUrl(tile)} alt={tile.title} />
+                    <GridListTile key={getBookImageUrl(tile)}>
+                        <img src={getBookImageUrl(tile)} alt={tile.title} />
                         <GridListTileBar
                             title={tile.title}
                             classes={{

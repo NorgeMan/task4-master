@@ -13,7 +13,7 @@
   "genres.label": "Жанры",
   "users.label": "Пользователи",
   "search.label": "Поиск",
-  "login.label": "Вoйти",
+  "login.label": "Вход",
   "registration.label": "Регистрация",
-  "logout.label": "Выйти"
+  "logout.label": "Выход"
 }

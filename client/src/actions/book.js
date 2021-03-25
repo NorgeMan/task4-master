@@ -69,6 +69,12 @@ export async function getBook(id) {
     }
 }
 
+export const getBookImageUrl = (book) => {
+    const idx = Math.floor(Math.random() * Math.floor(12));
+    return book.img ? book.img: '/asset/' + idx + '.svg';
+}
+
+
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
 //router.get('/book/create', bookController.book_create_get);
