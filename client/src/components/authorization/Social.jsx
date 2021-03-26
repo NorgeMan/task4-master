@@ -31,7 +31,7 @@ const Social = () => {
 
             <GoogleLogin
                 clientId="664878429364-e19l727v61ikq05ihfgkbu6d697hup6h.apps.googleusercontent.com"
-                buttonText="Login with google"
+                buttonText="Login with Google"
                 autoLoad={false}
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}

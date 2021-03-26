@@ -82,7 +82,7 @@ const Navbar = () => {
                                         handleCloseLang();
                                     }}>
                                         {t(lang)}
-                                    </MenuItem>
+             g                       </MenuItem>
                                 ))
                         }
                     </Menu>
@@ -107,9 +107,11 @@ const Navbar = () => {
                         <MenuItem onClick={handleClose}>
                             {isAdmin && <NavLink to="/users">{t('users.label')}</NavLink>}
                         </MenuItem>
+                        <MenuItem onClick={handleClose}>
+                            {!isAuth && <div className="navbar__registration" onClick={() => dispatchEvent(logout())}>
+                                <NavLink to="/logout">{t('logout.label')} </NavLink></div>}
+                        </MenuItem>
                     </Menu>
-                    {!isAuth && <div className="navbar__registration" onClick={() => dispatchEvent(logout())}><NavLink
-                        to="/logout">{t('logout.label')} </NavLink></div>}
                 </div>
             </div>
         </div>
