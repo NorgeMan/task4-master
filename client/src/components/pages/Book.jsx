@@ -1,13 +1,19 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import './book.css';
 import '../authorization/authorization.css';
+
 import {getBookUpdate} from "../../actions/book";
-import {withRouter, useParams} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Typography from '@material-ui/core/Typography';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Link from '@material-ui/core/Link';
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 // stateful component
 class Book extends Component {
@@ -35,10 +41,6 @@ class Book extends Component {
             [name]: value
         });
     }
-
-    mapStateToProps = state => ({
-        bookMap: state.bookMap
-    });
 
     async componentDidMount() {
         const id = this.props.match.params.id;
@@ -79,6 +81,15 @@ class Book extends Component {
         return (
             <div className="authorsList">
                 <div className="form__container form">
+                    <Breadcrumbs aria-label="breadcrumb">
+                        <Link color="inherit" href="/welcome" >
+                            Welcome page
+                        </Link>
+                        <Link color="inherit" href="/articles">
+                            Articles
+                        </Link>
+                        <Typography color="textPrimary">{this.state.title}</Typography>
+                    </Breadcrumbs>
                     <form onSubmit={this.handleSubmit}>
                         <h3>Book id:{this.props.match.params.id}</h3>
                         Name of the book:
@@ -98,14 +109,28 @@ class Book extends Component {
                                                 value={author._id}>{author.first_name} {author.family_name}</option>
                                     ))
                             }
-                        </select><br/>
+                        </select>
+                        <Autocomplete
+                            options={this.state.authors}
+                            getOptionLabel={(key) => `${key.first_name} ${key.family_name}`}
+                            style={{width: '100%'}}
+                            value= {(key) =>`${key._id}`}
+                            disableClearable
+                            onChange={(event, newValue) => {
+                            }}
+                            renderInput={(params) => (
+                                <TextField {...params} variant="outlined" fullWidth/>
+                            )}
+                        />
+
+                        <br/>
                         Summary:<br/>
                         <textarea name="Summary" value={this.state.summary} className="inputs"
                                   placeholder="Enter the summary"
                                   onChange={this.handleInputChange} cols={100} rows={10}
                                   wrap={true} required/>
                         <br/>Pin a file:
-                        <input className="file inputs" type="file" id="file" name="file" multiple/>
+
 
                         <FormControl required component="fieldset">
                             <FormLabel component="Genre">Genre:</FormLabel>

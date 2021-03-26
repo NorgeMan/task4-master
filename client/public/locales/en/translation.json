@@ -8,6 +8,7 @@
   "welcome_page.label": "Welcome page",
   "welcome_page_latest.label": "Recently changed",
   "welcome_page_popular.label": "Popular",
+  "welcome_page_catalog.label": "Catalog",
   "articles.label": "Articles",
   "authors.label": "Authors",
   "genres.label": "Genres",
@@ -15,5 +16,7 @@
   "search.label": "Search",
   "login.label": "Login In",
   "registration.label": "Sign Up",
-  "logout.label": "Log out"
+  "logout.label": "Log out",
+  "ru": "Russian",
+  "en": "English"
 }

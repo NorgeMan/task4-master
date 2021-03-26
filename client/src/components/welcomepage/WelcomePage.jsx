@@ -15,6 +15,7 @@ const WelcomePage = () => {
             <WelcomePageLatest />
             <h3>{t('welcome_page_popular.label')}</h3>
             <WelcomePagePopular />
+            <h3>{t('welcome_page_catalog.label')}</h3>
             <div className="container">
                 <div className="item">1</div>
                 <div className="item">2</div>

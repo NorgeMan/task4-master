@@ -5,19 +5,15 @@ import {Provider} from "react-redux";
 import 'bootstrap/dist/css/bootstrap.css';
 import './i18n';
 import {createTheme} from "react-dark-theme";
-import React from "react";
-
 
 const lightTheme = {
     background: 'white',
     text: 'black',
 }
-
 const darkTheme = {
     background: 'black',
     text: 'white',
 }
-
 const myTheme = createTheme(darkTheme, lightTheme)
 
 ReactDOM.render(

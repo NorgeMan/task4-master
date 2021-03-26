@@ -8,6 +8,7 @@
   "welcome_page.label": "Главная страница",
   "welcome_page_latest.label": "Последние обновленные",
   "welcome_page_popular.label": "Популярные",
+  "welcome_page_catalog.label": "Каталог",
   "articles.label": "Статьи",
   "authors.label": "Авторы",
   "genres.label": "Жанры",
@@ -15,5 +16,7 @@
   "search.label": "Поиск",
   "login.label": "Вход",
   "registration.label": "Регистрация",
-  "logout.label": "Выход"
+  "logout.label": "Выход",
+  "ru": "Русский",
+  "en": "Английский"
 }

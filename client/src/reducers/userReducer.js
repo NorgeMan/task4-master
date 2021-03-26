@@ -1,11 +1,13 @@
 const SET_USER = "SET_USER"
 const LOGOUT = "LOGOUT"
 const SET_USERS = "SET_USERS"
+const SET_LOCALE = "SET_LOCALE"
 
 const defaultState = {
     currentUser: {},
     isAuth: false,
-    users: []
+    users: [],
+    locale:{}
 }
 
 export default function userReducer (state = defaultState, action){
@@ -28,10 +30,16 @@ export default function userReducer (state = defaultState, action){
                 ...state,
                 users: action.payload
             }
+        case SET_LOCALE:
+            return {
+                ...state,
+                locale: action.payload
+            }
         default:
             return state
     }
 }
 export const setUser = user => ({type: SET_USER, payload: user})
+export const setLocale = locale => ({type: SET_LOCALE, payload: locale})
 export const logout = () => ({type: LOGOUT})
 export const setUsers = (users) => ({type: SET_USERS, payload: users})

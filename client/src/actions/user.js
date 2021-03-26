@@ -1,10 +1,9 @@
 import axiosConfig from './axiosConfig';
 import "bootstrap/dist/css/bootstrap.css";
-import {setUser, setUsers} from "../reducers/userReducer";
+import {setUser, setUsers, setLocale} from "../reducers/userReducer";
 
 export const registration = async (email, password) => {
     try {
-        // const response = await axios.post(`http://localhost:5000/api/auth/registration`, {
         const response = await axiosConfig.post(`/api/auth/registration`, {
             email,
             password
@@ -54,6 +53,17 @@ export const getUsers = () => {
             )
             console.log(response.data['user_list']);
             dispatch(setUsers(response.data['user_list']))
+        } catch (e) {
+            alert(e.message)
+        }
+    }
+}
+
+export const locale = (locale) => {
+    return async dispatch => {
+        try {
+            dispatch(setLocale(locale))
+            localStorage.setItem('locale', locale)
         } catch (e) {
             alert(e.message)
         }
