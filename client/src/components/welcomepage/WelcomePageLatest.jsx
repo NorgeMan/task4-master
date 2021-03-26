@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translateZ(0)',
     },
     title: {
-        color: theme.palette.primary.light,
+        color: 'white',
+        fontWeight: 'bold',
     },
     titleBar: {
         background:
@@ -44,11 +45,13 @@ const WelcomePageLatest = () => {
 
     return (
         <div className={classes.root}>
-            <GridList className={classes.gridList} cols={2.5}>
+            <GridList className={classes.gridList} cols={3}>
                 {
                     tileData.map((tile) => (
                         <GridListTile key={getBookImageUrl(tile)}>
-                            <img src={getBookImageUrl(tile)} alt={tile.title} />
+                             <a href={"/book/" + tile._id}>
+                                <img src={getBookImageUrl(tile)} alt={tile.title} style={{height: '100%', width: '100%' }} />
+                             </a>
                             <GridListTileBar
                                 title={tile.title}
                                 classes={{

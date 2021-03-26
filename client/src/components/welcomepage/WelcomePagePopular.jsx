@@ -22,7 +22,9 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translateZ(0)',
     },
     title: {
-        color: theme.palette.primary.light,
+         // color: theme.palette.primary.light,
+         color: 'white',
+         fontWeight: 'bold',
     },
     titleBar: {
         background:
@@ -48,7 +50,10 @@ const WelcomePagePopular = () => {
                 {
                     tileData.map((tile) => (
                         <GridListTile key={getBookImageUrl(tile)}>
-                            <img src={getBookImageUrl(tile)} alt={tile.title}/>
+                            <a href={"/book/" + tile._id}>
+                                <img src={getBookImageUrl(tile)} alt={tile.title}
+                                     style={{height: '100%', width: '100%'}}/>
+                            </a>
                             <GridListTileBar
                                 title={tile.title}
                                 subtitle={tile.summary}
