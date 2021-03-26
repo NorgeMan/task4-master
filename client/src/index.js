@@ -10,17 +10,19 @@ const lightTheme = {
     background: 'white',
     text: 'black',
 }
+
 const darkTheme = {
     background: 'black',
     text: 'white',
 }
+
 const myTheme = createTheme(darkTheme, lightTheme)
 
-ReactDOM.render(g
+ReactDOM.render(
     <Provider store={store}>
         <div style={{backgroundColor: myTheme.background, color: myTheme.text}}>
             <App/>
         </div>
-    </Provider>
+    </Provider>,
     document.getElementById('root')
 );
