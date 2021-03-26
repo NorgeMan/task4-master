@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import MaterialTable, {MTableToolbar} from "material-table";
 import {MTableIcons} from "../../utils/MTableWrapper";
 
-
 const Articles = () => {
     const dispatch = useDispatch()
     const bookState = useSelector(state => state.books);
