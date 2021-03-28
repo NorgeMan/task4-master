@@ -27,7 +27,6 @@ XML:
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/client" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/client/murmuring-lake-30163" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/server" vcs="Git" />
   </component>
 </project>
