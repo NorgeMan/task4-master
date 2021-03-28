@@ -130,6 +130,7 @@ class Book extends Component {
                             <FormLabel component="File">{t('file.text.label')}:</FormLabel>
                             <FormGroup>
                                 <Upload
+                                    className='upload'
                                     batch={false}
                                     multiple={true}
                                     defaultFiles={[]}
