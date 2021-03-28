@@ -6,6 +6,7 @@ import {getBookUpdate} from "../../actions/book";
 import {withRouter} from "react-router-dom";
 import {withTranslation} from 'react-i18next';
 
+import { withStyles } from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -16,7 +17,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { Upload } from "@progress/kendo-react-upload";
+import {Upload} from "@progress/kendo-react-upload";
 
 // stateful component
 class Book extends Component {
@@ -94,50 +95,48 @@ class Book extends Component {
                         </Link>
                         <Typography color="textPrimary">{this.state.title}</Typography>
                     </Breadcrumbs>
+
                     <form onSubmit={this.handleSubmit}>
                         <h3>{t('book.label')}: {this.props.match.params.id}</h3>
-                        {t('book_name.label')}:
-                        <input name="title" type="text" value={this.state.title} className="inputs"
-                               placeholder={t('book.text.label')}
-                               onChange={this.handleInputChange} required/>
-                        {t('author.label')}:
-                        <select name="author" value={this.state.author._id} className="about inputs"
-                                onChange={this.handleInputChange} required>
-                            {
-                                this.state.authors.map(
-                                    author => (
-                                        <option key={author._id}
-                                                value={author._id}>{author.first_name} {author.family_name}</option>
-                                    ))
-                            }
-                        </select>
-                        <Autocomplete
-                            options={this.state.authors}
-                            getOptionLabel={(key) => `${key.first_name} ${key.family_name}`}
-                            style={{width: '100%'}}
-                            value={this.state.author}
-                            disableClearable
-                            onChange={(event, newValue) => {
-                            }}
-                            renderInput={(params) => (
-                                <TextField {...params} variant="outlined" fullWidth/>
-                            )}
-                        />
-                        <br/>
-                        {t('summary.label')}:<br/>
-                        <textarea name="Summary" value={this.state.summary} className="inputs"
-                                  placeholder={t('summary.text.label')}
-                                  onChange={this.handleInputChange} cols={100} rows={6}
-                                  wrap={true} required/>
-                        {t('file.text.label')}:<br/>
-                        <Upload
-                            batch={false}
-                            multiple={true}
-                            defaultFiles={[]}
-                            withCredentials={false}
-                        />
-
                         <FormControl required component="fieldset">
+                            <br/>
+                            <FormLabel component="title">{t('book_name.label')}:</FormLabel>
+                            <FormGroup>
+                                <input name="title" type="text" value={this.state.title} className="inputs"
+                                       placeholder={t('book.text.label')}
+                                       onChange={this.handleInputChange} required/>
+                            </FormGroup>
+                            <FormLabel component="author">{t('author.label')}:</FormLabel>
+                            <FormGroup>
+                                <select name="author" value={this.state.author._id} className="about inputs"
+                                        onChange={this.handleInputChange} required>
+                                    {
+                                        this.state.authors.map(
+                                            author => (
+                                                <option key={author._id}
+                                                        value={author._id}>{author.first_name} {author.family_name}
+                                                </option>
+                                            ))
+                                    }
+                                </select>
+                            </FormGroup>
+                            <FormLabel component="Summary">{t('summary.label')}:</FormLabel>
+                            <FormGroup>
+                                <textarea name="Summary" value={this.state.summary} className="inputs"
+                                          placeholder={t('summary.text.label')}
+                                          onChange={this.handleInputChange} cols={100} rows={6}
+                                          wrap={true} required/>
+                            </FormGroup>
+                            <FormLabel component="File">{t('file.text.label')}:</FormLabel>
+                            <FormGroup>
+                                <Upload
+                                    batch={false}
+                                    multiple={true}
+                                    defaultFiles={[]}
+                                    withCredentials={false}
+                                />
+                            </FormGroup>
+                            <br/>
                             <FormLabel component="Genre">{t('genre.label')}:</FormLabel>
                             <FormGroup>
                                 <div style={{display: 'inline'}}>
@@ -146,10 +145,10 @@ class Book extends Component {
                                             genreItem => (
                                                 <FormControlLabel
                                                     control={<Checkbox
+                                                        id={genreItem._id}
                                                         name={genreItem.name}
                                                         value={genreItem._id}
                                                         onChange={this.toggleCheckbox}
-                                                        id={genreItem._id}
                                                     />}
                                                     label={genreItem.name}
                                                 />
@@ -161,11 +160,10 @@ class Book extends Component {
                             <FormGroup>
                                 <Autocomplete
                                     multiple
-                                    id="tags-standard"
+                                    id="Tag"
                                     options={this.state.genres}
-                                    getOptionLabel={(genreItem) => genreItem.name}
+                                    getOptionLabel={(genreItem) => `${genreItem.name}`}
                                     value={this.state.genres[0]}
-                                    defaultValue={this.state.genres[0]}
                                     renderInput={(params) => (
                                         <TextField
                                             {...params}
@@ -187,4 +185,3 @@ class Book extends Component {
 }
 
 export default withTranslation()(withRouter(Book));
-// withRouter
