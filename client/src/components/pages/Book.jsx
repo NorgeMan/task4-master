@@ -17,6 +17,7 @@ import Link from '@material-ui/core/Link';
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
+import { Upload } from "@progress/kendo-react-upload";
 // stateful component
 class Book extends Component {
     constructor(props) {
@@ -132,6 +133,12 @@ class Book extends Component {
                                   onChange={this.handleInputChange} cols={100} rows={6}
                                   wrap={true} required/>
                         <br/>Pin a file:
+                        <Upload
+                            batch={false}
+                            multiple={true}
+                            defaultFiles={[]}
+                            withCredentials={false}
+                        />
 
                         <FormControl required component="fieldset">
                             <FormLabel component="Genre">Genre:</FormLabel>
