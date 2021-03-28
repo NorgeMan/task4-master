@@ -4,7 +4,9 @@
     "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
     "part2": "Switch language between english and german using buttons above."
   },
-  "book_name.label": "Название книги",
+  "book_name.label": "Название статьи",
+  "book.label": "Статья",
+  "author.label": "Автор",
   "welcome_page.label": "Главная страница",
   "welcome_page_latest.label": "Последние обновленные",
   "welcome_page_popular.label": "Популярные",

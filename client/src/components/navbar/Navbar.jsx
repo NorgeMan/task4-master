@@ -82,7 +82,7 @@ const Navbar = () => {
                                         handleCloseLang();
                                     }}>
                                         {t(lang)}
-             g                       </MenuItem>
+                                    </MenuItem>
                                 ))
                         }
                     </Menu>

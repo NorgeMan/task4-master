@@ -5,6 +5,8 @@
     "part2": "Switch language between english and german using buttons above."
   },
   "book_name.label": "Name of the book",
+  "book.label": "Article",
+  "author.label": "Author",
   "welcome_page.label": "Welcome page",
   "welcome_page_latest.label": "Recently changed",
   "welcome_page_popular.label": "Popular",

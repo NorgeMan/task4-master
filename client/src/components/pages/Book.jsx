@@ -4,6 +4,8 @@ import '../authorization/authorization.css';
 
 import {getBookUpdate} from "../../actions/book";
 import {withRouter} from "react-router-dom";
+import {withTranslation} from 'react-i18next';
+
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -78,28 +80,28 @@ class Book extends Component {
     }
 
     render() {
+        const {t} = this.props;
         return (
             <div className="authorsList">
                 <div className="form__container form">
                     <Breadcrumbs aria-label="breadcrumb">
-                        <Link color="inherit" href="/welcome" >
-                            Welcome page
+                        <Link color="inherit" href="/welcome">
+                            {t('welcome_page.label')}
                         </Link>
                         <Link color="inherit" href="/articles">
-                            Articles
+                            {t('articles.label')}
                         </Link>
                         <Typography color="textPrimary">{this.state.title}</Typography>
                     </Breadcrumbs>
                     <form onSubmit={this.handleSubmit}>
-                        <h3>Book id:{this.props.match.params.id}</h3>
-                        Name of the book:
+                        <h3>{t('book.label')}:{this.props.match.params.id}</h3>
+                        {t('book_name.label')}:
                         <input name="title" type="text" value={this.state.title} className="inputs"
                                placeholder="Enter the book's title"
                                onChange={this.handleInputChange} required/>
-                        About author:
+                        {t('author.label')}:
                         <input className="about inputs" type="url" id="aboutAuthor" name="url"
                                placeholder="Enter the url with the info about author"/>
-                        About author:
                         <select name="author" value={this.state.author._id} className="inputs"
                                 onChange={this.handleInputChange} required>
                             {
@@ -114,7 +116,7 @@ class Book extends Component {
                             options={this.state.authors}
                             getOptionLabel={(key) => `${key.first_name} ${key.family_name}`}
                             style={{width: '100%'}}
-                            value= {(key) =>`${key._id}`}
+                            value={this.state.author}
                             disableClearable
                             onChange={(event, newValue) => {
                             }}
@@ -127,15 +129,13 @@ class Book extends Component {
                         Summary:<br/>
                         <textarea name="Summary" value={this.state.summary} className="inputs"
                                   placeholder="Enter the summary"
-                                  onChange={this.handleInputChange} cols={100} rows={10}
+                                  onChange={this.handleInputChange} cols={100} rows={6}
                                   wrap={true} required/>
                         <br/>Pin a file:
-
 
                         <FormControl required component="fieldset">
                             <FormLabel component="Genre">Genre:</FormLabel>
                             <FormGroup>
-
                                 <div style={{display: 'inline'}}>
                                     {
                                         this.state.genres.map(
@@ -153,8 +153,27 @@ class Book extends Component {
                                     }
                                 </div>
                             </FormGroup>
-                            <input className="submit" type="submit" name="Save" value="Save"/>
+                            <FormLabel component="Tag">Tags:</FormLabel>
+                            <FormGroup>
+                                <Autocomplete
+                                    multiple
+                                    id="tags-standard"
+                                    options={this.state.genres}
+                                    getOptionLabel={(genreItem) => genreItem.name}
+                                    defaultValue={this.state.genres[0]}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            variant="standard"
+                                            label="Tags"
+                                            placeholder="Select the tag value"
+                                        />
+                                    )}
+                                />
+                            </FormGroup>
                         </FormControl>
+
+                        <input className="submit" type="submit" name="Save" value="Save"/>
                     </form>
                 </div>
             </div>
@@ -162,4 +181,5 @@ class Book extends Component {
     }
 }
 
-export default withRouter(Book);
+export default withTranslation()(withRouter(Book));
+// withRouter

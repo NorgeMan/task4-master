@@ -16,12 +16,9 @@ const Users = () => {
         {
             title: 'id', field: '_id',
             render: rowData => {
-                if (rowData.email) {
-                    let url = "/user/" + rowData._id;
-                    let name = rowData.email;
-                    return (<a href={url}>{name}</a>);
-                }
-                return (<a href='/users'>..</a>);
+                let url = "/user/" + rowData._id;
+                let name = rowData.email ? rowData.email : 'user@' + rowData._id;
+                return (<a href={url}>{name}</a>);
             }
         },
         {title: 'Email', field: 'email'}
