@@ -96,10 +96,10 @@ class Book extends Component {
                         <Typography color="textPrimary">{this.state.title}</Typography>
                     </Breadcrumbs>
 
+                    <h3>{t('book.label')}: {this.props.match.params.id}</h3>
+                    <br/>
                     <form onSubmit={this.handleSubmit}>
-                        <h3>{t('book.label')}: {this.props.match.params.id}</h3>
                         <FormControl required component="fieldset">
-                            <br/>
                             <FormLabel component="title">{t('book_name.label')}:</FormLabel>
                             <FormGroup>
                                 <input name="title" type="text" value={this.state.title} className="inputs"
