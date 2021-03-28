@@ -134,6 +134,7 @@ class Book extends Component {
                                   wrap={true} required/>
                         <br/>Pin a file:
                         <Upload
+                            className="upload"
                             batch={false}
                             multiple={true}
                             defaultFiles={[]}

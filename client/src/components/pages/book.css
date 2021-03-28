@@ -34,3 +34,8 @@ h3 {
 .inputs {
     margin-bottom: 40px;
 }
+
+.upload {
+    border-radius: 10px;
+    border: 1px solid whitesmoke;
+}

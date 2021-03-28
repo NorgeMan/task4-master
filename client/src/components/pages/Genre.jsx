@@ -1,6 +1,7 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
 import './genres.css';
+import {Upload} from "@progress/kendo-react-upload";
 
 const Genre = () => {
     // We can use the `useParams` hook here to access
@@ -8,18 +9,19 @@ const Genre = () => {
     let {id} = useParams();
 
     return (
-        <div className="authorsList">
-            <div className="container">
-                <label>Add genre </label>
-                Name:
-                <input type="text" placeholder="Enter the author's name" required/>
-                Surname:
-                <input type="text" placeholder="Enter the author's surname" required/>
-                Date of birth:
-                <input type="date" id="birthday" name="birthday" />
-                Date of death:
-                <input type="date" id="day of the dead" name="day of the dead" />
-                <input type="submit" value="Enter"/>
+        <div className="genresList">
+            <div className="form__container form">
+                <h3>Add genre</h3>
+                <input type="text" className="inputs" placeholder="Enter the genre's name" required/>
+                <p>Pin articles if you want:</p>
+                <Upload
+                    className="upload"
+                    batch={false}
+                    multiple={true}
+                    defaultFiles={[]}
+                    withCredentials={false}
+                />
+                <input className="submit" type="submit" name="commit" value="Enter"/>
             </div>
         </div>
     );
