@@ -19,7 +19,6 @@ const WelcomePage = () => {
             <h3>{t('welcome_page_catalog.label')}</h3>
             <WelcomePageCatalog />
         </div>
-
     );
 };
 export default WelcomePage;
