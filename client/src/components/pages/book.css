@@ -36,6 +36,6 @@ h3 {
 }
 
 .upload {
-    border-radius: 10px;
-    border: 1px solid whitesmoke;
+    border-width: 1px;
+    border-style: solid;
 }
