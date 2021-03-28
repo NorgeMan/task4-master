@@ -16,8 +16,8 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-
 import { Upload } from "@progress/kendo-react-upload";
+
 // stateful component
 class Book extends Component {
     constructor(props) {
@@ -95,15 +95,13 @@ class Book extends Component {
                         <Typography color="textPrimary">{this.state.title}</Typography>
                     </Breadcrumbs>
                     <form onSubmit={this.handleSubmit}>
-                        <h3>{t('book.label')}:{this.props.match.params.id}</h3>
+                        <h3>{t('book.label')}: {this.props.match.params.id}</h3>
                         {t('book_name.label')}:
                         <input name="title" type="text" value={this.state.title} className="inputs"
-                               placeholder="Enter the book's title"
+                               placeholder={t('book.text.label')}
                                onChange={this.handleInputChange} required/>
                         {t('author.label')}:
-                        <input className="about inputs" type="url" id="aboutAuthor" name="url"
-                               placeholder="Enter the url with the info about author"/>
-                        <select name="author" value={this.state.author._id} className="inputs"
+                        <select name="author" value={this.state.author._id} className="about inputs"
                                 onChange={this.handleInputChange} required>
                             {
                                 this.state.authors.map(
@@ -125,14 +123,13 @@ class Book extends Component {
                                 <TextField {...params} variant="outlined" fullWidth/>
                             )}
                         />
-
                         <br/>
-                        Summary:<br/>
+                        {t('summary.label')}:<br/>
                         <textarea name="Summary" value={this.state.summary} className="inputs"
-                                  placeholder="Enter the summary"
+                                  placeholder={t('summary.text.label')}
                                   onChange={this.handleInputChange} cols={100} rows={6}
                                   wrap={true} required/>
-                        <br/>Pin a file:
+                        {t('file.text.label')}:<br/>
                         <Upload
                             batch={false}
                             multiple={true}
@@ -141,7 +138,7 @@ class Book extends Component {
                         />
 
                         <FormControl required component="fieldset">
-                            <FormLabel component="Genre">Genre:</FormLabel>
+                            <FormLabel component="Genre">{t('genre.label')}:</FormLabel>
                             <FormGroup>
                                 <div style={{display: 'inline'}}>
                                     {
@@ -160,27 +157,28 @@ class Book extends Component {
                                     }
                                 </div>
                             </FormGroup>
-                            <FormLabel component="Tag">Tags:</FormLabel>
+                            <FormLabel component="Tag">{t('tags.label')}:</FormLabel>
                             <FormGroup>
                                 <Autocomplete
                                     multiple
                                     id="tags-standard"
                                     options={this.state.genres}
                                     getOptionLabel={(genreItem) => genreItem.name}
+                                    value={this.state.genres[0]}
                                     defaultValue={this.state.genres[0]}
                                     renderInput={(params) => (
                                         <TextField
                                             {...params}
                                             variant="standard"
-                                            label="Tags"
-                                            placeholder="Select the tag value"
+                                            label={t('tags.label')}
+                                            placeholder={t('tag.text.label')}
                                         />
                                     )}
                                 />
                             </FormGroup>
                         </FormControl>
 
-                        <input className="submit" type="submit" name="Save" value="Save"/>
+                        <input className="submit" type="submit" name="Save" value={t('save.label')}/>
                     </form>
                 </div>
             </div>
