@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import MaterialTable from "material-table";
 import {MTableIcons} from "../../utils/MTableWrapper";
 import {getUsers} from "../../actions/user";
+import {useTranslation} from 'react-i18next';
 
 const Users = () => {
     const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const Users = () => {
     if (!userState) {
         dispatch(getUsers());
     }
-
+    const {t} = useTranslation();
     const tableIcons = MTableIcons();
     const columns = [
         {
@@ -30,7 +31,7 @@ const Users = () => {
     }
     return (
         <div style={{height: '100%', width: '100%'}}>
-            <MaterialTable title="Users" data={rows} columns={columns}
+            <MaterialTable title={t('users.label')} data={rows} columns={columns}
                            icons={tableIcons}
                            options={{search: true, paging: true, pageSize: 10, exportButton: true}}
             />

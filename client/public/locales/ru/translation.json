@@ -25,5 +25,6 @@
   "tag.label": "Тэг",
   "tag.text.label": "Выберите тэг",
   "save.label": "Сохранить",
-  "book.text.label": "Введите название статьи"
+  "book.text.label": "Введите название статьи",
+  "author.date.label": "Дата рождения"
 }

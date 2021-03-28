@@ -3,6 +3,7 @@ import {getGenres} from "../../actions/genre";
 import {useDispatch, useSelector} from "react-redux";
 import MaterialTable, {MTableToolbar} from "material-table";
 import {MTableIcons} from "../../utils/MTableWrapper";
+import {useTranslation} from 'react-i18next';
 
 const Genres = () => {
     const dispatch = useDispatch()
@@ -10,10 +11,11 @@ const Genres = () => {
     if (!genreState) {
         dispatch(getGenres());
     }
+    const {t} = useTranslation();
     const tableIcons = MTableIcons();
     const columns = [
         {
-            title: 'Title', field: 'name',
+            title: t('genre.label'), field: 'name',
             render: rowData => {
                 if (rowData.name) {
                     let url = "/genre/" + rowData._id;
@@ -38,7 +40,7 @@ const Genres = () => {
     }
     return (
         <div style={{height: '100%', width: '100%'}}>
-            <MaterialTable title="Genres" data={rows} columns={columns}
+            <MaterialTable title={t('genres.label')} data={rows} columns={columns}
                            icons={tableIcons}
                            options={{search: true, paging: true, pageSize: 10, exportButton: true}}
             />

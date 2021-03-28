@@ -4,8 +4,10 @@ import {useDispatch, useSelector} from "react-redux";
 import MaterialTable from "material-table";
 import {MTableIcons} from "../../utils/MTableWrapper";
 import dateFormat from 'dateformat';
+import {useTranslation} from 'react-i18next';
 
 const Authors = () => {
+    const {t} = useTranslation();
     const dispatch = useDispatch()
     const authorState = useSelector(state => state.authors);
     if (!authorState) {
@@ -15,7 +17,7 @@ const Authors = () => {
     const tableIcons = MTableIcons();
     const columns = [
         {
-            title: 'Author', field: 'first_name',
+            title: t('author.label'), field: 'first_name',
             render: rowData => {
                 if (rowData.first_name) {
                     let url = "/author/" + rowData._id;
@@ -25,7 +27,7 @@ const Authors = () => {
                 return (<a href='/authors'>..</a>);
             }
         }, {
-            title: 'Date of birth', field: 'date_of_birth',
+            title: t('author.date.label'), field: 'date_of_birth',
             render: rowData => {
                 return rowData.date_of_birth ? dateFormat(rowData.date_of_birth, "dd mmmm yyyy") : '';
             }
@@ -37,7 +39,7 @@ const Authors = () => {
     }
     return (
         <div style={{height: '100%', width: '100%'}}>
-            <MaterialTable title="Authors" data={rows} columns={columns}
+            <MaterialTable title={t('authors.label')} data={rows} columns={columns}
                            icons={tableIcons}
                            options={{search: true, paging: true, pageSize: 10, exportButton: true}}
             />

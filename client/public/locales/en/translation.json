@@ -26,5 +26,6 @@
   "tag.label": "Tag",
   "tag.text.label": "Select the tag value",
   "save.label": "Save",
-  "book.text.label": "Enter the book's title"
+  "book.text.label": "Enter the book's title",
+  "author.date.label": "Date of birth"
 }

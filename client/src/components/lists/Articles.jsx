@@ -3,6 +3,7 @@ import {getBooks} from "../../actions/book";
 import {useDispatch, useSelector} from "react-redux";
 import MaterialTable, {MTableToolbar} from "material-table";
 import {MTableIcons} from "../../utils/MTableWrapper";
+import {useTranslation} from 'react-i18next';
 
 const Articles = () => {
     const dispatch = useDispatch()
@@ -10,17 +11,18 @@ const Articles = () => {
     if (!bookState) {
         dispatch(getBooks());
     }
+    const {t} = useTranslation();
     const tableIcons = MTableIcons();
     const columns = [
         {
-            title: 'Title', field: 'title',
+            title: t('book.label'), field: 'title',
             render: rowData => {
                 let url = "/book/" + rowData._id;
                 return (<a href={url}>{rowData.title}</a>);
             }
         },
         {
-            title: 'Author', field: 'author.first_name',
+            title: t('author.label'), field: 'author.first_name',
             render: rowData => {
                 if (rowData.author) {
                     let url = "/author/" + rowData.author._id;
@@ -45,7 +47,7 @@ const Articles = () => {
     }
     return (
         <div style={{height: '100%', width: '100%'}}>
-            <MaterialTable title="Articles" data={rows} columns={columns}
+            <MaterialTable title={t('articles.label')} data={rows} columns={columns}
                            icons={tableIcons}
                            options={{search: true, paging: true, pageSize: 10, exportButton: true}}
                            onRowClick={(event, rowData) => rowClickedHandler(rowData)}
