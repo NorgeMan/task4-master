@@ -1,9 +1,4 @@
 {
-  "title": "Welcome to react using react-i18next",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
-  },
   "book_name.label": "Название статьи",
   "book.label": "Статья",
   "author.label": "Автор",
@@ -20,5 +15,15 @@
   "registration.label": "Регистрация",
   "logout.label": "Выход",
   "ru": "Русский",
-  "en": "Английский"
+  "en": "Английский",
+  "summary.label": "Описание",
+  "summary.text.label": "Введите описание статьи",
+  "file.text.label": "Выберите файл",
+  "author.text.label": "Выберите автора",
+  "genre.label": "Жанр",
+  "tags.label": "Тэги",
+  "tag.label": "Тэг",
+  "tag.text.label": "Выберите тэг",
+  "save.label": "Сохранить",
+  "book.text.label": "Введите название статьи"
 }

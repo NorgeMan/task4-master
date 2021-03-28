@@ -6,7 +6,6 @@ import {getBookUpdate} from "../../actions/book";
 import {withRouter} from "react-router-dom";
 import {withTranslation} from 'react-i18next';
 
-import { withStyles } from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -106,7 +105,7 @@ class Book extends Component {
                                        placeholder={t('book.text.label')}
                                        onChange={this.handleInputChange} required/>
                             </FormGroup>
-                            <FormLabel component="author">{t('author.label')}:</FormLabel>
+                            <FormLabel style={{fontWeight: 'bold'}} component="author">{t('author.label')}:</FormLabel>
                             <FormGroup>
                                 <select name="author" value={this.state.author._id} className="about inputs"
                                         onChange={this.handleInputChange} required>
@@ -120,14 +119,15 @@ class Book extends Component {
                                     }
                                 </select>
                             </FormGroup>
-                            <FormLabel component="Summary">{t('summary.label')}:</FormLabel>
+                            <FormLabel style={{fontWeight: 'bold'}}
+                                       component="Summary">{t('summary.label')}:</FormLabel>
                             <FormGroup>
                                 <textarea name="Summary" value={this.state.summary} className="inputs"
                                           placeholder={t('summary.text.label')}
                                           onChange={this.handleInputChange} cols={100} rows={6}
                                           wrap={true} required/>
                             </FormGroup>
-                            <FormLabel component="File">{t('file.text.label')}:</FormLabel>
+                            <FormLabel style={{fontWeight: 'bold'}} component="File">{t('file.text.label')}:</FormLabel>
                             <FormGroup>
                                 <Upload
                                     className='upload'
@@ -138,7 +138,7 @@ class Book extends Component {
                                 />
                             </FormGroup>
                             <br/>
-                            <FormLabel component="Genre">{t('genre.label')}:</FormLabel>
+                            <FormLabel style={{fontWeight: 'bold'}} component="Genre">{t('genre.label')}:</FormLabel>
                             <FormGroup>
                                 <div style={{display: 'inline'}}>
                                     {
@@ -157,7 +157,7 @@ class Book extends Component {
                                     }
                                 </div>
                             </FormGroup>
-                            <FormLabel component="Tag">{t('tags.label')}:</FormLabel>
+                            <FormLabel style={{fontWeight: 'bold'}} component="Tag">{t('tags.label')}:</FormLabel>
                             <FormGroup>
                                 <Autocomplete
                                     multiple
@@ -169,7 +169,6 @@ class Book extends Component {
                                         <TextField
                                             {...params}
                                             variant="standard"
-                                            label={t('tags.label')}
                                             placeholder={t('tag.text.label')}
                                         />
                                     )}

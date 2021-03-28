@@ -38,3 +38,7 @@ h3 {
     border-width: 1px;
     border-style: solid;
 }
+
+.form__label {
+    font-weight: bold;
+}
