@@ -44,8 +44,8 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "startprod": "node server.js",
-    "start": "react-scripts start",
+    "start": "node server.js",
+    "start1": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

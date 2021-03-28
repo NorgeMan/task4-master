@@ -94,6 +94,7 @@ class Book extends Component {
                         </Link>
                         <Typography color="textPrimary">{this.state.title}</Typography>
                     </Breadcrumbs>
+
                     <h3>{t('book.label')}: {this.props.match.params.id}</h3>
                     <br/>
                     <form onSubmit={this.handleSubmit}>
